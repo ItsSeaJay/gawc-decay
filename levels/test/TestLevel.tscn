@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://environment/blocks/wood/WoodBlock.tscn" type="PackedScene" id=1]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="WoodBlock" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0.0915222, 0 )
+
+[node name="WoodBlock2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 16.0979, 0 )
+
+[node name="WoodBlock3" parent="." instance=ExtResource( 1 )]
+position = Vector2( -15.9149, 0 )
+
+[node name="WoodBlock6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48.1107, 0 )
+
+[node name="WoodBlock5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 64.1171, 0 )
+
+[node name="WoodBlock4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32.1043, 0 )
+
+[node name="WoodBlock12" parent="." instance=ExtResource( 1 )]
+position = Vector2( -95.9468, 0 )
+
+[node name="WoodBlock11" parent="." instance=ExtResource( 1 )]
+position = Vector2( -79.9404, 0 )
+
+[node name="WoodBlock10" parent="." instance=ExtResource( 1 )]
+position = Vector2( -111.953, 0 )
+
+[node name="WoodBlock9" parent="." instance=ExtResource( 1 )]
+position = Vector2( -47.9276, 0 )
+
+[node name="WoodBlock8" parent="." instance=ExtResource( 1 )]
+position = Vector2( -31.9213, 0 )
+
+[node name="WoodBlock7" parent="." instance=ExtResource( 1 )]
+position = Vector2( -63.934, 0 )

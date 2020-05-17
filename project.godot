@@ -21,9 +21,16 @@ _global_script_class_icons={
 [application]
 
 config/name="GAWK Decay"
-config/description="Side-Scrolling platformer where the entire leve"
+config/description="Side-Scrolling platformer where the entire level is falling apart around you."
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=384
+window/size/height=216
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [importer_defaults]
 
@@ -70,4 +77,6 @@ move_jump={
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false
