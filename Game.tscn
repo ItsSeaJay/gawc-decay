@@ -7,5 +7,11 @@
 
 [node name="IronBlock" parent="." instance=ExtResource( 1 )]
 
+[node name="IronBlock2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1.10956, 64.6318 )
+
+[node name="IronBlock3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1.38695, 111.233 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -41.8115 )
