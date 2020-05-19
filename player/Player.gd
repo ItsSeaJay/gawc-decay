@@ -8,10 +8,10 @@ enum State {
 	STATE_AIRBORNE,
 }
 
-export var movement_speed : float = 64
-export var jump_height : float = 32
+export var movement_speed = 64
+export var jump_height = 32
 export var jump_duration : float = 2
-export var terminal_velocity : float = 128
+export var terminal_velocity = 128
 
 var state = State.STATE_NORMAL
 var gravity
@@ -38,6 +38,9 @@ func _physics_process(delta):
 			
 			if is_on_floor():
 				transition(State.STATE_NORMAL)
+			
+			if is_on_ceiling():
+				velocity.y = 0
 	
 	velocity_final = move_and_slide(velocity, Vector2.UP)
 

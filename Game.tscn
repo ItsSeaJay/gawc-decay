@@ -9,3 +9,6 @@
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 58.1402, 151.771 )
+jump_height = 50
+jump_duration = 0.66
+terminal_velocity = 222
