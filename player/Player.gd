@@ -8,10 +8,10 @@ enum State {
 	STATE_AIRBORNE,
 }
 
-export var movement_speed = 64
-export var jump_height = 32
-export var jump_duration = 2
-export var terminal_velocity = 128
+export var movement_speed : float = 64
+export var jump_height : float = 32
+export var jump_duration : float = 2
+export var terminal_velocity : float = 128
 
 var state = State.STATE_NORMAL
 var gravity
@@ -40,8 +40,6 @@ func _physics_process(delta):
 				transition(State.STATE_NORMAL)
 	
 	velocity_final = move_and_slide(velocity, Vector2.UP)
-	
-	print(state)
 
 func process_movement(delta):
 	velocity.x = get_input_direction() * movement_speed
