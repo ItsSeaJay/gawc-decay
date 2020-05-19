@@ -13,6 +13,7 @@ const PauseMenu = preload("res://interface/screens/PauseMenu.tscn")
 export var movement_speed = 64
 export var jump_height = 32
 export var jump_duration : float = 2
+export var jump_cancel_speed = 0
 export var terminal_velocity = 128
 
 var state = State.STATE_NORMAL
@@ -23,6 +24,10 @@ onready var velocity = Vector2.ZERO
 onready var velocity_final = Vector2.ZERO
 
 func _ready():
+	assert(movement_speed > 0)
+	assert(jump_height > 0)
+	assert(jump_duration > 0)
+	
 	gravity = 2.0 * jump_height / pow(jump_duration / 2.0, 2.0)
 	jump_speed = -sqrt(2.0 * gravity * jump_height)
 
@@ -42,6 +47,7 @@ func _physics_process(delta):
 		State.STATE_AIRBORNE:
 			process_movement(delta)
 			process_falling(delta)
+			process_jump_cancel(delta)
 			
 			if is_on_floor():
 				transition(State.STATE_NORMAL)
@@ -57,6 +63,10 @@ func process_movement(delta):
 func process_jumping(delta):
 	if Input.is_action_just_pressed("move_jump"):
 		velocity.y = jump_speed
+
+func process_jump_cancel(delta):
+	if Input.is_action_just_released("move_jump"):
+		velocity.y = jump_cancel_speed
 
 func process_falling(delta):
 	velocity.y = min(velocity.y + gravity * delta, terminal_velocity)
