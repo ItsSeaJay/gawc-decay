@@ -12,3 +12,5 @@ position = Vector2( 58.1402, 151.771 )
 jump_height = 50
 jump_duration = 0.66
 terminal_velocity = 222
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

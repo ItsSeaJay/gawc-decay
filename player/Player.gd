@@ -8,6 +8,8 @@ enum State {
 	STATE_AIRBORNE,
 }
 
+const PauseMenu = preload("res://interface/screens/PauseMenu.tscn")
+
 export var movement_speed = 64
 export var jump_height = 32
 export var jump_duration : float = 2
@@ -23,6 +25,11 @@ onready var velocity_final = Vector2.ZERO
 func _ready():
 	gravity = 2.0 * jump_height / pow(jump_duration / 2.0, 2.0)
 	jump_speed = -sqrt(2.0 * gravity * jump_height)
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_pause"):
+		var instance = PauseMenu.instance()
+		get_tree().root.add_child(instance)
 
 func _physics_process(delta):
 	match(state):
@@ -53,7 +60,6 @@ func process_jumping(delta):
 
 func process_falling(delta):
 	velocity.y = min(velocity.y + gravity * delta, terminal_velocity)
-	pass
 
 func transition(state):
 	match(state):
