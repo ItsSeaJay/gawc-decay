@@ -10,11 +10,11 @@ enum State {
 
 const PauseMenu = preload("res://interface/screens/PauseMenu.tscn")
 
-export var movement_speed = 64
-export var jump_height = 32
-export var jump_duration : float = 2
-export var jump_cancel_speed = 0
-export var terminal_velocity = 128
+export var movement_speed = 96
+export var jump_height = 50
+export var jump_duration : float = 0.66
+export var jump_cancel_speed : float = 0
+export var terminal_velocity = 222
 
 var state = State.STATE_NORMAL
 var gravity
@@ -28,6 +28,7 @@ func _ready():
 	assert(jump_height > 0)
 	assert(jump_duration > 0)
 	
+	# Calculate jumping variables
 	gravity = 2.0 * jump_height / pow(jump_duration / 2.0, 2.0)
 	jump_speed = -sqrt(2.0 * gravity * jump_height)
 
@@ -35,6 +36,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_pause"):
 		var instance = PauseMenu.instance()
 		get_tree().root.add_child(instance)
+	
+	if position.y > get_viewport().size.y:
+		die()
 
 func _physics_process(delta):
 	match(state):
@@ -49,11 +53,11 @@ func _physics_process(delta):
 			process_falling(delta)
 			process_jump_cancel(delta)
 			
-			if is_on_floor():
-				transition(State.STATE_NORMAL)
-			
 			if is_on_ceiling():
 				velocity.y = 0
+			
+			if is_on_floor():
+				transition(State.STATE_NORMAL)
 	
 	velocity_final = move_and_slide(velocity, Vector2.UP)
 
@@ -65,11 +69,15 @@ func process_jumping(delta):
 		velocity.y = jump_speed
 
 func process_jump_cancel(delta):
-	if Input.is_action_just_released("move_jump"):
-		velocity.y = jump_cancel_speed
+	if velocity.y < 0:
+		if Input.is_action_just_released("move_jump"):
+			velocity.y = jump_cancel_speed
 
 func process_falling(delta):
 	velocity.y = min(velocity.y + gravity * delta, terminal_velocity)
+
+func die():
+	queue_free()
 
 func transition(state):
 	match(state):

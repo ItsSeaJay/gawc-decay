@@ -58,6 +58,17 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+vnen.tiled_importer={
+"add_background": true,
+"collision_layer": 1,
+"custom_properties": true,
+"embed_internal_images": true,
+"image_flags": 0,
+"post_import_script": "res://tilemaps/post_import.gd",
+"save_tiled_properties": false,
+"tile_metadata": true,
+"uv_clip": true
+}
 
 [input]
 
