@@ -2,11 +2,12 @@ extends Area2D
 
 const Player = preload("res://player/Player.gd")
 
-export var destination = "res://test"
+export var destination = "res://tilemaps/default/default.tmx"
 
 onready var collision_shape = $CollisionShape2D
 
 func _ready():
+	# Alter shape size from metadata
 	if get_meta_list().size() > 0:
 		if has_meta("width"):
 			var rect : RectangleShape2D = collision_shape.shape as RectangleShape2D

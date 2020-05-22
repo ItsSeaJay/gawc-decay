@@ -19,9 +19,12 @@ export var terminal_velocity = 222
 var state = State.STATE_NORMAL
 var gravity
 var jump_speed
+var animation_node_state_machine
 
 onready var velocity = Vector2.ZERO
 onready var velocity_final = Vector2.ZERO
+onready var animation_player : AnimationPlayer = $AnimationPlayer
+onready var animation_tree : AnimationTree = $AnimationTree
 
 func _ready():
 	assert(movement_speed > 0)
@@ -31,6 +34,10 @@ func _ready():
 	# Calculate jumping variables
 	gravity = 2.0 * jump_height / pow(jump_duration / 2.0, 2.0)
 	jump_speed = -sqrt(2.0 * gravity * jump_height)
+	
+	# Setup animation system
+	animation_tree.set_active(true)
+	animation_node_state_machine = animation_tree.get("parameters/playback")
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_pause"):
@@ -45,6 +52,12 @@ func _physics_process(delta):
 		State.STATE_NORMAL:
 			process_movement(delta)
 			process_jumping(delta)
+			process_sprite_flipping()
+			
+			if get_input_direction() != 0 and animation_player.current_animation != "walk":
+				animation_node_state_machine.travel("walk")
+			elif get_input_direction() == 0 and animation_player.current_animation != "stand":
+				animation_node_state_machine.travel("stand")
 			
 			if not is_on_floor():
 				transition(State.STATE_AIRBORNE)
@@ -52,6 +65,7 @@ func _physics_process(delta):
 			process_movement(delta)
 			process_falling(delta)
 			process_jump_cancel(delta)
+			process_sprite_flipping()
 			
 			if is_on_ceiling():
 				velocity.y = 0
@@ -76,15 +90,21 @@ func process_jump_cancel(delta):
 func process_falling(delta):
 	velocity.y = min(velocity.y + gravity * delta, terminal_velocity)
 
+func process_sprite_flipping():
+	if Input.is_action_just_pressed("move_left"):
+		$Sprite.flip_h = true
+	elif Input.is_action_just_pressed("move_right"):
+		$Sprite.flip_h = false
+
 func die():
-	queue_free()
+	get_tree().reload_current_scene()
 
 func transition(state):
 	match(state):
 		State.STATE_NORMAL:
-			pass
+			animation_node_state_machine.travel("stand")
 		State.STATE_AIRBORNE:
-			pass
+			animation_node_state_machine.travel("jump")
 	
 	self.state = state
 

@@ -1,10 +1,91 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://player/Player.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "stand"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "walk"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1, 4 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "stand"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachine" id=14]
+states/jump/node = SubResource( 5 )
+states/jump/position = Vector2( 627, 64 )
+states/stand/node = SubResource( 6 )
+states/stand/position = Vector2( 455, 62 )
+states/walk/node = SubResource( 7 )
+states/walk/position = Vector2( 536, 149 )
+transitions = [ "stand", "jump", SubResource( 8 ), "stand", "walk", SubResource( 9 ), "walk", "stand", SubResource( 10 ), "walk", "jump", SubResource( 11 ), "jump", "walk", SubResource( 12 ), "jump", "stand", SubResource( 13 ) ]
+start_node = "stand"
+graph_offset = Vector2( -54, -4 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -14,3 +95,15 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+hframes = 6
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/jump = SubResource( 4 )
+anims/stand = SubResource( 2 )
+anims/walk = SubResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 14 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 15 )
