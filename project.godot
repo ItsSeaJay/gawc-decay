@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "AudioSystem",
+"language": "GDScript",
+"path": "res://autoload/audio_system/AudioSystem.gd"
+}, {
+"base": "Node",
 "class": "PlayState",
 "language": "GDScript",
 "path": "res://states/PlayState.gd"
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://state_machine/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"AudioSystem": "",
 "PlayState": "",
 "Player": "",
 "State": "",
@@ -42,6 +48,10 @@ config/name="GAWK Decay"
 config/description="Side-Scrolling platformer where the entire level is falling apart around you."
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+AudioSystem="*res://autoload/audio_system/AudioSystem.gd"
 
 [display]
 

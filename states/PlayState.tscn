@@ -31,6 +31,6 @@ color = Color( 0.341176, 0.32549, 0.447059, 1 )
 [node name="001_beginnings" parent="Maps" instance=ExtResource( 2 )]
 
 [node name="Light2D" type="Light2D" parent="Maps/001_beginnings"]
-position = Vector2( 281.681, 95.7277 )
-scale = Vector2( 6.72165, 7.95951 )
+position = Vector2( 282.059, 96.105 )
+scale = Vector2( 6.72165, 8.00668 )
 texture = ExtResource( 3 )
