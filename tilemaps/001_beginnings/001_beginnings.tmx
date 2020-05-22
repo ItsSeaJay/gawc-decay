@@ -40,7 +40,7 @@
  <objectgroup id="5" name="Object Layer 1">
   <object id="1" name="Exit Door" type="Portal" x="273.667" y="144" width="30" height="32">
    <properties>
-    <property name="scene" value=""/>
+    <property name="scene" value="res://navigation/Portal.tscn"/>
    </properties>
   </object>
   <object id="2" name="Player Spawn" type="Player" x="78.6667" y="165">

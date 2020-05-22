@@ -2,11 +2,13 @@
 
 importer="vnen.tiled_importer"
 type="PackedScene"
-valid=false
+path="res://.import/001_beginnings.tmx-e2b93d4a0d789dbbc2b565fc32de8ced.scn"
 
 [deps]
 
 source_file="res://tilemaps/001_beginnings/001_beginnings.tmx"
+dest_files=[ "res://.import/001_beginnings.tmx-e2b93d4a0d789dbbc2b565fc32de8ced.scn" ]
+
 [params]
 
 custom_properties=true
