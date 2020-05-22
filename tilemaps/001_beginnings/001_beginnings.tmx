@@ -43,7 +43,7 @@
     <property name="scene" value="res://navigation/Portal.tscn"/>
    </properties>
   </object>
-  <object id="2" name="Player Spawn" type="Player" x="78.6667" y="165">
+  <object id="2" name="Player Spawn" type="Player" x="80" y="144">
    <properties>
     <property name="scene" value="res://player/Player.tscn"/>
    </properties>
