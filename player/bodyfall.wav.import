@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bodyfall.wav-93861861db40ba7534781454077a1bcf.sample"
+
+[deps]
+
+source_file="res://player/bodyfall.wav"
+dest_files=[ "res://.import/bodyfall.wav-93861861db40ba7534781454077a1bcf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

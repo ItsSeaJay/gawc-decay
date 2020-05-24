@@ -38,15 +38,11 @@
 </data>
  </layer>
  <objectgroup id="5" name="Object Layer 1">
-  <object id="1" name="Exit Door" type="Portal" x="273.667" y="144" width="30" height="32">
+  <object id="1" name="Exit Door" type="res://navigation/Portal.tscn" x="273.334" y="144" width="30" height="32">
    <properties>
-    <property name="scene" value="res://navigation/Portal.tscn"/>
+    <property name="destination" value="res://tilemaps/002_corridor/002_corridor.tmx"/>
    </properties>
   </object>
-  <object id="2" name="Player Spawn" type="Player" x="80" y="144">
-   <properties>
-    <property name="scene" value="res://player/Player.tscn"/>
-   </properties>
-  </object>
+  <object id="2" name="Player Spawn" type="res://player/Player.tscn" x="69.6667" y="166"/>
  </objectgroup>
 </map>

@@ -10,11 +10,6 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "AudioSystem",
-"language": "GDScript",
-"path": "res://autoload/audio_system/AudioSystem.gd"
-}, {
-"base": "Node",
 "class": "PlayState",
 "language": "GDScript",
 "path": "res://states/PlayState.gd"
@@ -35,7 +30,6 @@ _global_script_classes=[ {
 "path": "res://state_machine/StateMachine.gd"
 } ]
 _global_script_class_icons={
-"AudioSystem": "",
 "PlayState": "",
 "Player": "",
 "State": "",
@@ -90,10 +84,10 @@ vnen.tiled_importer={
 "add_background": true,
 "collision_layer": 1,
 "custom_properties": true,
-"embed_internal_images": true,
+"embed_internal_images": false,
 "image_flags": 0,
 "post_import_script": "res://tilemaps/post_import.gd",
-"save_tiled_properties": false,
+"save_tiled_properties": true,
 "tile_metadata": true,
 "uv_clip": true
 }

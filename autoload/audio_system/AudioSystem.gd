@@ -1,5 +1,4 @@
 extends Node
-class_name AudioSystem
 
 var sounds = []
 
@@ -14,6 +13,9 @@ func play_sound(path, options={}):
 	
 	player.stream = load(path)
 	player.autoplay = true
+	
+	if options.has("volume_db"):
+		player.volume_db = options["volume_db"]
 	
 	if options.has("pitch_scale"):
 		player.pitch_scale = options["pitch_scale"]

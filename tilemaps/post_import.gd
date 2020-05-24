@@ -13,8 +13,9 @@ func post_import(scene):
 			# This is an object layer
 			for object in layer.get_children():
 				if object.has_meta("scene"):
-					var type = object.get_meta("scene")
-					var instance = load(type).instance()
+					print(object.get_meta_list())
+					
+					var instance = load(get_meta("type")).instance()
 					
 					instance.set_global_position(object.get_global_position())
 					

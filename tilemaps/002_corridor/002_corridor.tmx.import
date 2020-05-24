@@ -2,12 +2,12 @@
 
 importer="vnen.tiled_importer"
 type="PackedScene"
-path="res://.import/002_shaft.tmx-ba29c8e867f2c8b74256d581c65d3dd5.scn"
+path="res://.import/002_corridor.tmx-c5ff6c49a27f3184e2ff4ef3678dd45a.scn"
 
 [deps]
 
-source_file="res://tilemaps/002_shaft/002_shaft.tmx"
-dest_files=[ "res://.import/002_shaft.tmx-ba29c8e867f2c8b74256d581c65d3dd5.scn" ]
+source_file="res://tilemaps/002_corridor/002_corridor.tmx"
+dest_files=[ "res://.import/002_corridor.tmx-c5ff6c49a27f3184e2ff4ef3678dd45a.scn" ]
 
 [params]
 
@@ -16,7 +16,7 @@ tile_metadata=true
 uv_clip=true
 image_flags=0
 collision_layer=1
-embed_internal_images=true
+embed_internal_images=false
 save_tiled_properties=true
 add_background=true
 post_import_script="res://tilemaps/post_import.gd"

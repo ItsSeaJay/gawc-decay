@@ -71,6 +71,9 @@ func _physics_process(delta):
 				velocity.y = 0
 			
 			if is_on_floor():
+				AudioSystem.play_sound("res://player/bodyfall.wav",
+				{ "volume_db": -80 / (terminal_velocity - velocity_final.x), "pitch_scale": rand_range(0.9, 1.0) })
+				
 				transition(State.STATE_NORMAL)
 	
 	velocity_final = move_and_slide(velocity, Vector2.UP)
@@ -81,6 +84,8 @@ func process_movement(delta):
 func process_jumping(delta):
 	if Input.is_action_just_pressed("move_jump"):
 		velocity.y = jump_speed
+		
+		AudioSystem.play_sound("res://player/jump.wav", { "pitch_scale": rand_range(0.5, 1.0) })
 
 func process_jump_cancel(delta):
 	if velocity.y < 0:
