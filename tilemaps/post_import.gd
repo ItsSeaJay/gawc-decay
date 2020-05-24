@@ -1,6 +1,8 @@
 extends Node
 
 func post_import(scene):
+	print("Post import on ", scene.get_name(), ".tmx")
+	
 	for layer in scene.get_children():
 		# This is a tile layer
 		if layer is TileMap:
@@ -12,16 +14,17 @@ func post_import(scene):
 		elif layer is Node2D:
 			# This is an object layer
 			for object in layer.get_children():
-				if object.has_meta("scene"):
-					print(object.get_meta_list())
-					
-					var instance = load(get_meta("type")).instance()
-					
-					instance.set_global_position(object.get_global_position())
+				if object.has_meta("type"):
+					var type = object.get_meta("type")
+					var instance = load(type).instance()
+				
+					instance.set_position(object.get_position() + Vector2(8, -8))
 					
 					if instance != null:
 						scene.add_child(instance)
 						instance.set_owner(scene)
+						
+						print("Added ", object.get_meta("type"), " at ", object.get_position())
 			
 			layer.free()
 	
